@@ -22,7 +22,7 @@ COPY pyproject.toml ./
 
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir uv \
-    && uv sync --locked --no-dev --no-install-project
+    && uv sync --no-dev --no-install-project
 
 COPY . .
 
