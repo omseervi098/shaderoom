@@ -1,0 +1,4 @@
+models/sam_vit_h_encoder.onnx
+
+.venv/
+__pycache__/

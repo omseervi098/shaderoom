@@ -1,0 +1,14 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi-limiter>=0.2.0",
+    "fastapi[standard]>=0.128.5",
+    "onnxruntime>=1.24.1",
+    "opencv-python-headless>=4.13.0.92",
+    "pip",
+    "pydantic-settings>=2.12.0",
+]
