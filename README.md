@@ -74,7 +74,7 @@ npm run dev
 
 
 ## Backend — quick start
-1. Create and activate a Python environment (example using venv):
+1. Create and activate a Python environment (example using uv):
 
 ```bash
 cd backend
