@@ -5,7 +5,6 @@ import { useStepper } from "../hooks/stepper/stepperContext.js";
 import { useGeneral } from "../hooks/general/generalContext.js";
 import { EditorProvider } from "../hooks/editor/editorProvider.jsx";
 import * as ort from "onnxruntime-web/all";
-import ONNXDecoderModel from "../assets/sam_vit_b_decoder.onnx";
 import { useState, useEffect } from "react";
 ort.env.wasm.numThreads = 1;
 ort.env.logLevel = "error";
@@ -22,14 +21,20 @@ const getExecutionProviders = () => {
   if (typeof MLContext !== "undefined" || typeof MLGraphBuilder !== "undefined") {
     providers.push("webnn");
   }
-  
+
   //cpu via web assembly
   providers.push("wasm");
   return providers;
 };
 
 const getModelSession = async () => {
-  const session = await ort.InferenceSession.create(`${ONNXDecoderModel}`, {
+  const decoder = import.meta.env.VITE_APP_DECODER || "sam_vit_h_decoder.onnx";
+  const modelUrl =
+    decoder.match(/^https?:\/\//)
+      ? decoder
+      : new URL(`../assets/${decoder}`, import.meta.url).href;
+
+  const session = await ort.InferenceSession.create(modelUrl, {
     executionProviders: getExecutionProviders(),
     logSeverityLevel: 3,
   });

@@ -19,7 +19,7 @@ export const getImageEmbedding = async (imageElement) => {
     const imageFile = await convertURLtoFile(imageElement.src, "image.jpg");
     // float16 for low network
     let float16flag = ["3g", "2g", "4g"].includes(navigator.connection.effectiveType)
-    let url = `${import.meta.env.VITE_APP_BACKEND_URI}/get-embedding?tensorType=${float16flag?"float16":"float32"}&__sign=${import.meta.env.VITE_APP_BACKEND_TOKEN}`;
+    let url = `${import.meta.env.VITE_APP_BACKEND_URI}/get-embedding?tensorType=${float16flag?"float16":"float32"}`;
 
     if (import.meta.env.MODE === "development") {
       url = `${import.meta.env.VITE_APP_BACKEND_URI}/get-embedding?tensorType=${float16flag?"float16":"float32"}`;
