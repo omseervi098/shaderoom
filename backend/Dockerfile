@@ -18,7 +18,7 @@ RUN --mount=type=secret,id=HF_AUTH_TOKEN,mode=0444,required=true \
       -H "Authorization: Bearer $(cat /run/secrets/HF_AUTH_TOKEN)" \
       "${BASE_URL}"
 
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir uv \
