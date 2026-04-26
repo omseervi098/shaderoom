@@ -1,0 +1,12 @@
+uv.lock
+.venv
+.env
+
+__pycache__/
+*.py[cod]
+
+models/
+backend/models/
+
+node_modules/
+.env.local

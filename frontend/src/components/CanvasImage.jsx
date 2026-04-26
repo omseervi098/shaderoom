@@ -1,5 +1,5 @@
 import { Check, Circle as IconCircle, Square, Triangle } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Circle, Group, Image, Layer, Shape, Stage } from "react-konva";
 import { useEditor } from "../hooks/editor/editorContext.js";
 import { getBoundaryFromImageData, getBounds, getMaskIndexOnHover, getSolidMaskRows } from "../utils/modesHelper.js";
@@ -16,7 +16,7 @@ import { useStepper } from "../hooks/stepper/stepperContext.js";
 
 
 export default function CanvasImage() {
-  const { image, scale, mode, setMode, maskState, removeMask, applyShadeToMask, applyPerspectiveToMask, removeShadeFromMask, selectedShade, viewMode, setViewMode, finalImg, setFinalImg } = useEditor();
+  const { image, scale, mode, setMode, maskState, removeMask, applyShadeToMask, applyPerspectiveToMask, removeShadeFromMask, selectedShade, viewMode, setViewMode, setFinalImg } = useEditor();
   const { registerFunctions } = useStepper();
   const containerRef = useRef(null);
   const imageWrapperRef = useRef(null);

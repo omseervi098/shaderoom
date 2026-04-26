@@ -13,7 +13,7 @@ ENV MODEL_PATH="${MODEL_DIR}/${MODEL_NAME}"
 
 RUN mkdir -p "${MODEL_DIR}"
 
-RUN --mount=type=secret,id=HF_AUTH_TOKEN,mode=0444,required=true \
+RUN --mount=type=secret,id=HF_AUTH_TOKEN,mode=0400,required=true \
     curl -fL -o "${MODEL_PATH}" \
       -H "Authorization: Bearer $(cat /run/secrets/HF_AUTH_TOKEN)" \
       "${BASE_URL}"
@@ -28,4 +28,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["uv", "run", "fastapi", "run", "main.py", "--port", "5000", "--workers", "2"]
+CMD ["uv", "run", "uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "5000", "--workers", "2"]

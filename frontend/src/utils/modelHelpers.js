@@ -17,14 +17,8 @@ export const getImageEmbedding = async (imageElement) => {
   if (!imageElement) return null;
   try {
     const imageFile = await convertURLtoFile(imageElement.src, "image.jpg");
-    // float16 for low network
-    let float16flag = ["3g", "2g", "4g"].includes(navigator.connection.effectiveType)
+    let float16flag = ["3g", "2g"].includes(navigator.connection.effectiveType)
     let url = `${import.meta.env.VITE_APP_BACKEND_URI}/get-embedding?tensorType=${float16flag?"float16":"float32"}`;
-
-    if (import.meta.env.MODE === "development") {
-      url = `${import.meta.env.VITE_APP_BACKEND_URI}/get-embedding?tensorType=${float16flag?"float16":"float32"}`;
-      console.log("Development mode: Using local backend URI", url);
-    }
 
     const response = await axios.post(
       url,

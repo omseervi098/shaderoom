@@ -1,5 +1,3 @@
-import "./App.css";
-import { useTheme } from "./hooks/useTheme.js";
 import Landing from "./pages/Landing";
 import Journey from "./pages/Journey";
 import { Route, Routes } from "react-router";
@@ -8,8 +6,6 @@ import { GeneralProvider } from "./hooks/general/generalProvider";
 
 function App() {
   
-  const { theme, toggleTheme } = useTheme();
-
   return (
     <GeneralProvider>
       <StepperProvider>
