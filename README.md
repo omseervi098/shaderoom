@@ -1,7 +1,6 @@
 # ShadeRoom
 
-## Project Description and Purpose
-ShadeRoom is an advanced web application that allows users to edit and manipulate room images using AI-powered segmentation. The application enables users to select specific areas of a room image and apply different colors or textures to them, making it easy to visualize interior design changes without physically altering the space.
+ShadeRoom is an AI Interior Designer that allows users to edit and manipulate room images using AI-powered segmentation. The application enables users to select specific areas of a room image and apply different colors or textures to them, making it easy to visualize interior design changes without physically altering the space.
 
 
 ## Features
