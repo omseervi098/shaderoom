@@ -51,7 +51,7 @@ def create_app() -> FastAPI:
         minimum_size=1024,
         compresslevel=6,
     )
-    app.include_router(router)
+    app.router.routes.extend(router.routes)
 
     return app
 

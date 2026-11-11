@@ -8,12 +8,11 @@ Overview
 - Models are stored under `models/` and referenced via the `MODEL_PATH` environment variable.
 
 Directory layout
-- `main.py` — compatibility entrypoint for `fastapi dev main.py`.
-- `src/shaderoom_backend/app.py` — FastAPI app factory and middleware setup.
-- `src/shaderoom_backend/api/` — routes and request dependencies.
-- `src/shaderoom_backend/core/` — settings and logging.
-- `src/shaderoom_backend/services/` — ONNX session loading and image preprocessing.
-- `src/shaderoom_backend/schemas.py` — shared Pydantic models and enums.
+- `src/app.py` — FastAPI app factory and middleware setup.
+- `src/api/` — routes and request dependencies.
+- `src/config.py`, `src/logging.py` — settings and logging.
+- `src/services/` — ONNX session loading and image preprocessing.
+- `src/schemas.py` — shared Pydantic models and enums.
 
 Requirements
 - Python >= 3.14
@@ -21,7 +20,7 @@ Requirements
 
 Configuration
 - Configure runtime values in the `.env` file (or environment):
-	- `MODEL_PATH` — path to the ONNX model (e.g. `models/sam_vit_b_encoder.onnx`)
+	- `MODEL_PATH` — path to the ONNX model (e.g. `models/sam_vit_h_encoder.onnx`)
 	- `API_TOKEN` — secret used for `x-api-key` header on protected endpoints
 	- `CORS_ORIGINS` — list of allowed origins (e.g. `["*"]`)
 
@@ -34,7 +33,7 @@ cd backend
 # install dependencies (choose one)
 uv sync
 # or install from pyproject with your preferred tool
-fastapi dev main.py
+fastapi dev src/app.py
 ```
 
 Docker

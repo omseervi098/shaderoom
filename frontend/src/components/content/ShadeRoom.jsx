@@ -76,8 +76,8 @@ export default function ShadeRoom({ modelSession }) {
 
         setMaskOutput(onnxMaskToImage({
           input: output.data,
-          width: output.dims[2],
-          height: output.dims[3],
+          width: output.dims[3],
+          height: output.dims[2],
           maskColor: rgb,
         }));
       }

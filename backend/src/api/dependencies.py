@@ -24,14 +24,22 @@ def validate_image_upload(
             detail="Unsupported file type",
         )
 
-    if image.size and image.size > settings.max_input_size_mb * 1024 * 1024:
+    max_bytes = settings.max_input_size_mb * 1024 * 1024
+    if image.size and image.size > max_bytes:
+        raise HTTPException(
+            status_code=HTTPStatus.REQUEST_ENTITY_TOO_LARGE,
+            detail="File too large",
+        )
+
+    data = image.file.read(max_bytes + 1)
+    if len(data) > max_bytes:
         raise HTTPException(
             status_code=HTTPStatus.REQUEST_ENTITY_TOO_LARGE,
             detail="File too large",
         )
 
     return ImageFile(
-        data=image.file.read(),
+        data=data,
         filename=image.filename,
         content_type=image.content_type,
     )

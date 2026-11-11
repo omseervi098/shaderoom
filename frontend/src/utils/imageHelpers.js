@@ -40,7 +40,7 @@ export const arrayToImageData = ({input, width, height, maskColor}) => {
       arr[4 * i + 3] = a;
     }
   }
-  return new ImageData(arr, height, width);
+  return new ImageData(arr, width, height);
 };
 export const imageDataToImage = (imageData) => {
   const canvas = imageDataToCanvas(imageData);

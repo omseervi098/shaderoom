@@ -48,7 +48,13 @@ def get_embedding(
 ) -> Response:
     try:
         logger.info("Received embedding request for %s", image.filename)
-        processed_image = ImagePreprocessor(image.data).process()
+        try:
+            processed_image = ImagePreprocessor(image.data).process()
+        except ValueError as exc:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail="Could not decode image",
+            ) from exc
 
         output = model_session.run(None, {"input_image": processed_image})
         if output is None or len(output) == 0:
@@ -75,6 +81,6 @@ def get_embedding(
         logger.exception("Error while computing image embedding")
         raise HTTPException(
             status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
-            detail=str(exc),
+            detail="Failed to compute embedding",
         ) from exc
 

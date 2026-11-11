@@ -96,7 +96,7 @@ CORS_ORIGINS=["*"]
 4. Run the server (development):
 
 ```bash
-fastapi dev main.py
+fastapi dev src/app.py
 ```
 
 Endpoints:
