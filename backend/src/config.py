@@ -26,8 +26,9 @@ class Settings(BaseSettings):
     log_format: str = Field(default="%(asctime)s - %(levelname)s - %(name)s - %(message)s", alias="LOG_FORMAT")
     model_path: str = Field(..., alias="MODEL_PATH")
     rate_limit: int = Field(default=5, alias="RATE_LIMIT_PER_MINUTE")
-    api_token: str = Field(..., alias="API_TOKEN")
+    api_token: str | None = Field(default=None, alias="API_TOKEN")
     cors_origins: list[str] = Field(default=["*"], alias="CORS_ORIGINS")
+    static_dir: str | None = Field(default=None, alias="STATIC_DIR")
 
     input_img_res: tuple[int, int] = Field(default=(684, 1024), alias="INPUT_IMG_RES")
     max_dimension: int = Field(default=1500, alias="MAX_DIMENSION")

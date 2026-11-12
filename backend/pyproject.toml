@@ -5,10 +5,16 @@ description = "This is backend for Shaderoom"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "fastapi>=0.128.5",
     "fastapi-limiter>=0.2.0",
-    "fastapi[standard]>=0.128.5",
     "onnxruntime>=1.24.1",
     "opencv-python-headless>=4.13.0.92",
-    "pip",
     "pydantic-settings>=2.12.0",
+    "python-multipart>=0.0.20",
+    "uvicorn>=0.34.0",
+]
+
+[dependency-groups]
+dev = [
+    "fastapi[standard]>=0.128.5",
 ]

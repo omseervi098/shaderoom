@@ -28,4 +28,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["uv", "run", "uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "5000", "--workers", "2"]
+CMD ["uv", "run", "--no-sync", "uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "5000", "--workers", "2"]

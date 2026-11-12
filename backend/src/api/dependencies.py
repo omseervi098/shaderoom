@@ -56,10 +56,12 @@ def get_model_session(request: Request) -> onnxruntime.InferenceSession:
 
 
 def verify_api_token(
-    x_api_key: str = Header(...),
+    x_api_key: str | None = Header(default=None),
     settings: Settings = Depends(get_settings),
 ) -> None:
-    if not hmac.compare_digest(x_api_key, settings.api_token):
+    if settings.api_token is None:
+        return
+    if x_api_key is None or not hmac.compare_digest(x_api_key, settings.api_token):
         raise HTTPException(
             status_code=HTTPStatus.UNAUTHORIZED,
             detail="Invalid API token",

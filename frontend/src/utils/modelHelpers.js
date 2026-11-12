@@ -19,7 +19,8 @@ export const getImageEmbedding = async (imageElement) => {
     const imageFile = await convertURLtoFile(imageElement.src, "image.jpg");
     const effectiveType = navigator.connection?.effectiveType;
     let float16flag = ["slow-2g", "2g", "3g"].includes(effectiveType);
-    let url = `${import.meta.env.VITE_APP_BACKEND_URI}/get-embedding?tensorType=${float16flag?"float16":"float32"}`;
+    const backendUri = import.meta.env.VITE_APP_BACKEND_URI ?? "";
+    let url = `${backendUri}/get-embedding?tensorType=${float16flag?"float16":"float32"}`;
 
     const response = await axios.post(
       url,

@@ -1,0 +1,13 @@
+*
+!frontend/
+!backend/pyproject.toml
+!backend/src/
+!backend/models/sam_vit_h_encoder.onnx
+
+**/.env
+**/.env.*
+**/node_modules/
+**/dist/
+**/__pycache__/
+**/*.py[cod]
+**/.DS_Store

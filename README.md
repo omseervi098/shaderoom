@@ -107,6 +107,15 @@ Notes:
 - The backend preloads the ONNX encoder at startup to reduce inference latency.
 - Ensure the `MODEL_PATH` points to a compatible ONNX model in `backend/models/`.
 
+## Docker
+A ready-to-run image with the frontend, backend and model is published on Docker Hub: [pyxdev/shaderoom](https://hub.docker.com/r/pyxdev/shaderoom)
+
+```bash
+docker run --rm -p 8000:8000 pyxdev/shaderoom:latest
+```
+
+Then open `http://localhost:8000`.
+
 ## Sharing images / public URLs
 - The frontend can generate a data URL of the final image and use the Web Share API to share a blob (native share) when available.
 
